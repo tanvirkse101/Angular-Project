@@ -1,0 +1,20 @@
+<div class="container border" style="min-height: 100vh">
+  <div class="row">
+    <div class="col-md">
+      <div class="jumbotron bg-primary text-white">
+        <h1 class="text-center">Test project</h1>
+      </div>
+      <div class="row justify-content-center">
+        <app-game (intervalFired)="onIntervalFired($event)"></app-game>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md justify-content-center">
+          <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-odd>
+        </div>
+        <div class="col-md justify-content-center">
+          <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></app-even>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
