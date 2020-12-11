@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Shopping-Project-Angular';
+  loadedfeature = 'recipe';
+
+  // tslint:disable-next-line:typedef
+  onNavigate(feature: string) {
+    this.loadedfeature = feature;
+  }
 }
