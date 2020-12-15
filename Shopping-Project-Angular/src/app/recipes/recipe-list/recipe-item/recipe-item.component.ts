@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../../recipe.model';
+import {RecipeService} from '../../recipe.service';
 
 
 @Component({
@@ -10,9 +11,8 @@ import {Recipe} from '../../recipe.model';
 export class RecipeItemComponent implements OnInit {
   // @ts-ignore
   @Input() recipe: Recipe;
-  @Output() recipeSelected = new EventEmitter<void>();
 
-  constructor() {
+  constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +20,6 @@ export class RecipeItemComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSelected() {
-    this.recipeSelected.emit();
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 }
