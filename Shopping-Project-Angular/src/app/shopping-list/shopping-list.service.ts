@@ -21,4 +21,14 @@ export class ShoppingListService {
     // @ts-ignore
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
+
+  // tslint:disable-next-line:typedef
+  addIngredients(ingredients: Ingredient[]) {
+    // for (let ingredient of ingredients) {
+    //   this.addIngredient(ingredient);
+    // }
+    this.ingredients.push(...ingredients);
+    // @ts-ignore
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
 }
