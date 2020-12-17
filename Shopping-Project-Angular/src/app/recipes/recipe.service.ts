@@ -35,11 +35,6 @@ export class RecipeService {
   }
 
   // tslint:disable-next-line:typedef
-  getRecipe(index: number){
-    return this.recipes[index];
-  }
-
-  // tslint:disable-next-line:typedef
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
