@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 export class ShoppingListService {
 
   ingredientsChanged = new Subject<Ingredient>();
+  startedEditing = new Subject<number>();
 
   private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
@@ -13,6 +14,11 @@ export class ShoppingListService {
   // tslint:disable-next-line:typedef
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  // tslint:disable-next-line:typedef
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   // tslint:disable-next-line:typedef
@@ -28,6 +34,20 @@ export class ShoppingListService {
     //   this.addIngredient(ingredient);
     // }
     this.ingredients.push(...ingredients);
+    // @ts-ignore
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  // tslint:disable-next-line:typedef
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    // @ts-ignore
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
     // @ts-ignore
     this.ingredientsChanged.next(this.ingredients.slice());
   }
