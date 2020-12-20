@@ -19,11 +19,17 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.recipeService.recipesChanged.subscribe(
+      // @ts-ignore
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+      }
+    );
     this.recipes = this.recipeService.getRecipes();
   }
 
   // tslint:disable-next-line:typedef
-  onNewRecipe(){
+  onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 }
