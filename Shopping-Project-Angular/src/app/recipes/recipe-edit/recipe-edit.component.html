@@ -7,7 +7,7 @@
                   class="btn btn-success m-1"
                   [disabled]="!recipeForm.valid">Save
           </button>
-          <button type="button" class="btn btn-danger m-1">Cancel</button>
+          <button type="button" class="btn btn-danger m-1" (click)="onCancel()">Cancel</button>
         </div>
       </div>
       <div class="row">
@@ -31,13 +31,14 @@
                    id="imagePath"
                    class="form-control"
                    formControlName="imagePath"
+                   #imagePath
             >
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <img src="" class="img-thumbnail" alt="Recipe Image">
+          <img [src]="imagePath.value" class="img-thumbnail" alt="Recipe Image">
         </div>
       </div>
       <div class="row">
@@ -71,7 +72,7 @@
                 formControlName="amount">
             </div>
             <div class="col-md-2">
-              <button class="btn btn-danger">X</button>
+              <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
             </div>
           </div>
           <div class="row">
